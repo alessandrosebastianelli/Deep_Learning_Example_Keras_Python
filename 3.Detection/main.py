@@ -6,13 +6,6 @@ from tensorflow.keras import backend as K
 
 from tensorflow.keras.utils import plot_model
 
-def smoothL1(y_true, y_pred):
-    x = K.abs(y_true - y_pred)
-    x = K.switch(x < 0.5, 0.5*x**2, 0.5*(x - 0.5*0.5))
-
-    return K.sum(x)
-
-
 def dataset_generator(batch_size = 16):
     img_shape = (32, 32, 3)
     
@@ -42,7 +35,7 @@ def dataset_generator(batch_size = 16):
 
 def build_model():
     model = Sequential()
-    model.add(Flatten())
+    model.add(Flatten(input_shape=(32, 32, 3)))
     model.add(Dense(512, activation = 'relu'))
     model.add(Dense(512, activation = 'relu'))
     model.add(Dense(128, activation = 'relu'))

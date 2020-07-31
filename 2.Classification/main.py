@@ -38,7 +38,7 @@ def dataset_generator(batch_size = 16):
 
 def build_model():
     model = Sequential()
-    model.add(Flatten())
+    model.add(Flatten(input_shape=(32, 32, 3)))
     model.add(Dense(512, activation = 'relu'))
     model.add(Dense(128, activation = 'relu'))
     model.add(Dense(64, activation = 'relu'))
