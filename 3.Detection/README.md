@@ -4,7 +4,7 @@ The model used is based on a Fully Connected Network
 
 ![](model_plot.png)
 
-Note that the dataset will be created at run time. There are 3 (red, blue and green square) + 1 classes (no square)
+Note that the dataset will be created at run time.
 
 ## Test
 
