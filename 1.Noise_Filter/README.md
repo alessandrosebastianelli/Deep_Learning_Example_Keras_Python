@@ -1,10 +1,10 @@
 # Additive Noise Filter with a Deep Neural Network
 
-The model used is Fully Connected Network
+The model used is based on a Fully Connected Network
 
 ![](model_plot.png)
 
-Plese note that the datast will be created in runtime. The noise has a normal distibution (mean 0 and variance 1), scaled by a 0.2 factor.
+Note that the dataset will be created at run time. The noise has a normal distibution (mean 0 and variance 1), scaled by a 0.2 factor.
 
 ## Test
 
