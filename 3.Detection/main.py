@@ -58,7 +58,6 @@ def build_model():
     return model
 
 def bounding_box(coordinates):
-
     box = np.zeros((32, 32, 3))
     box[:, int(round(coordinates[1], 1)), 0] = 1
     box[:, int(round(coordinates[3], 1)), 0] = 1
