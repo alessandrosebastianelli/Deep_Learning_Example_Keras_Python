@@ -10,7 +10,7 @@ Plese note that the datast will be created in runtime. The noise has a normal di
 
 The model was trained for 15 epochs, with a batch size of 16.
 
-![](Test1.png)
+![](Test_1.png)
 
 
 ##### Note
