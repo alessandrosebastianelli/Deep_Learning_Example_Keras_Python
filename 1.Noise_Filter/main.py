@@ -14,19 +14,19 @@ def dataset_generator(batch_size, time_size):
     while True:
         
         for i in range(batch_size):
-            x_train[i,...] = np.sin(t)
-            y_train[i,...] = np.sin(t)
+            x_train[i,...] = np.sin(t)/2.0
+            y_train[i,...] = np.sin(t)/2.0
             for dt in range(time_size):
                 error = np.random.normal(0, 1, size = 1)
-                x_train[i, dt] = x_train[i, dt] + 0.2*error
+                x_train[i, dt] = x_train[i, dt] + 0.3*error/2.0
 
         yield x_train, y_train
 
 def build_model(time_size):
     model = Sequential()
-    model.add(Dense(128, input_dim=time_size, activation='tanh'))
-    model.add(Dense(64, activation='tanh'))
-    model.add(Dense(32, activation='tanh'))
+    model.add(Dense(time_size, input_dim=time_size, activation='tanh'))
+    model.add(Dense(time_size//2, activation='tanh'))
+    model.add(Dense(time_size//4, activation='tanh'))
     model.add(Dense(time_size, activation='tanh'))
     model.compile(loss='mse', optimizer='adam')
 
@@ -43,10 +43,10 @@ model = build_model(time_size)
 
 history = model.fit_generator(
     dataset_generator(16, time_size),
-    steps_per_epoch=1000//16,
+    steps_per_epoch=4000//16,
     validation_data=dataset_generator(16, time_size),
-    validation_steps=1000//16,
-    epochs=15
+    validation_steps=4000//16,
+    epochs=20
 )
 
 #fig, ax = plt.subplots(nrows=1, ncols=1, figsize = (5, 5))
