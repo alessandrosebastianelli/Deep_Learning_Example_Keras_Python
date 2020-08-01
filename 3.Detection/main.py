@@ -20,8 +20,8 @@ def dataset_generator(batch_size = 16):
             object_height = int(np.random.randint(4, high = 12, size = 1)) 
             #object_height = object_width
 
-            x = np.random.randint(object_width, high = img_shape[0] - object_width)
-            y = np.random.randint(object_height, high = img_shape[0] - object_height)
+            x = np.random.randint(object_width + 1, high = img_shape[0] - object_width - 1)
+            y = np.random.randint(object_height + 1, high = img_shape[0] - object_height - 1)
 
             x_train[b, x:x+object_width, y:y+object_height, 1] = 1
             #y_train[b, 0] = 1.0
@@ -39,8 +39,8 @@ def build_model():
     model.add(Dense(512, activation = 'relu'))
     model.add(Dense(512, activation = 'relu'))
     model.add(Dense(128, activation = 'relu'))
-    model.add(Dense(64, activation = 'relu'))
-    model.add(Dense(32, activation = 'relu'))
+    model.add(Dense(64,  activation = 'relu'))
+    model.add(Dense(32,  activation = 'relu'))
     model.add(Dense(4))
 
     model.compile(loss='mse', optimizer = 'adam')
@@ -52,10 +52,10 @@ def build_model():
 
 def bounding_box(coordinates):
     box = np.zeros((32, 32, 3))
-    box[:, int(round(coordinates[1], 1)), 0] = 1
-    box[:, int(round(coordinates[3], 1)), 0] = 1
-    box[int(round(coordinates[0], 1)), :, 0] = 1
-    box[int(round(coordinates[2], 1)), :, 0] = 1
+    box[:, int(round(coordinates[1], 1)) -1 , 0] = 1
+    box[:, int(round(coordinates[3], 1)) + 1, 0] = 1
+    box[int(round(coordinates[0], 1)) - 1, :, 0] = 1
+    box[int(round(coordinates[2], 1)) + 1, :, 0] = 1
 
     return box
     
