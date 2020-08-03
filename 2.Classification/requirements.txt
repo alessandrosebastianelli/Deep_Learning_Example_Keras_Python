@@ -2,3 +2,4 @@ numpy
 matplotlib
 tensorflow
 pydot
+scikit-learn
