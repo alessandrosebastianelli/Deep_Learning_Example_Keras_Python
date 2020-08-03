@@ -13,7 +13,10 @@ The model was trained for 10 epochs, with a batch size of 16.
 ![](Test_1.png)
 
 Confusion matrices
-![](CM_1.png) ![](CM_2.png)
+
+![](CM_1.png)
+
+![](CM_2.png)
 
 
 ##### Note
